@@ -1,5 +1,16 @@
 package com.homework.parts;
 
-public class Text {
+import java.util.List;
 
+public class Text {
+    private List<Paragraph> paragraphs;
+
+    public List<Paragraph> getText() {
+        return paragraphs;
+    }
+
+    public Text(List<Paragraph> paragraphs) {
+        this.paragraphs = paragraphs;
+    }
+    
 }
