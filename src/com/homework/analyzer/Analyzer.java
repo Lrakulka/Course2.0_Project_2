@@ -39,21 +39,21 @@ public interface Analyzer {
      * @param text
      * @return list of words
      */
-    List<Word> getTextWords(StringBuilder text);
+    List<Word> getTextWords(String text);
     
     /**
      * Return list of numbers from input text.
      * @param text
      * @return list of numbers
      */
-    List<Number> getTextNumbers(StringBuilder text);
+    List<Number> getTextNumbers(String text);
     
     /**
      * Return list of input text signs - [.,',,,! and so on..
      * @param text
      * @return list of signs
      */
-    List<Sign> getTextSigns(StringBuilder text);
+    List<Sign> getTextSigns(String text);
     
     /**
      * Return list of sentences which contains the most common words.
