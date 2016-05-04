@@ -34,7 +34,9 @@ public class AnalyzerImp implements Analyzer {
 	String paragraphString;
 	while (matcher.find()) {
 	    paragraphString = matcher.group();
-	    paragraphs.add(new Paragraph(getSentences(paragraphString)));
+	    if (!paragraphString.isEmpty()) {
+		paragraphs.add(new Paragraph(getSentences(paragraphString)));
+	    }
 	}
 	return paragraphs;
     }
@@ -46,28 +48,54 @@ public class AnalyzerImp implements Analyzer {
 	String sentencesString;
 	while (matcher.find()) {
 	    sentencesString = matcher.group();
-	    sentences.add(new Sentence(getTextWords(sentencesString), 
+	    if (!sentencesString.isEmpty()) {
+		sentences.add(new Sentence(getTextWords(sentencesString), 
 		    getTextNumbers(sentencesString), getTextSigns(sentencesString)));
+	    }
 	}
 	return sentences;
     }
 
     @Override
     public List<Word> getTextWords(String text) {
-	// TODO Auto-generated method stub
-	return null;
+	List<Word> words = new ArrayList<>();
+	Matcher matcher = wordPattern.matcher(text);
+	String word;
+	while (matcher.find()) {
+	    word = matcher.group();
+	    if (word.isEmpty()) {
+		words.add(new Word(word, matcher.start()));
+	    }
+	}
+	return words;
     }
 
     @Override
     public List<Number> getTextNumbers(String text) {
-	// TODO Auto-generated method stub
-	return null;
+	List<Number> numbers = new ArrayList<>();
+	Matcher matcher = numberPattern.matcher(text);
+	String number;
+	while (matcher.find()) {
+	    number = matcher.group();
+	    if (!number.isEmpty()) {
+		numbers.add(new Number(Integer.valueOf(number), matcher.start()));
+	    }
+	}
+	return numbers;
     }
 
     @Override
     public List<Sign> getTextSigns(String text) {
-	// TODO Auto-generated method stub
-	return null;
+	List<Sign> signs = new ArrayList<>();
+	Matcher matcher = signPattern.matcher(text);
+	String sign;
+	while (matcher.find()) {
+	    sign = matcher.group();
+	    if (!sign.isEmpty()) {
+		signs.add(new Sign(sign.charAt(0), matcher.start()));
+	    }
+	}
+	return signs;
     }
 
     /* (non-Javadoc)
@@ -75,8 +103,12 @@ public class AnalyzerImp implements Analyzer {
      */
     @Override
     public List<Sentence> sortSentencesByWordsCount(Text text) {
-	// TODO Auto-generated method stub
-	return null;
+	List<Sentence> sentences = new ArrayList<>();
+	text.getParagraphs().stream().forEach((p) -> sentences.addAll(p.getSentences()));
+	sentences.stream().sorted((sentenc1, sentence2) -> 
+			Integer.compare(sentenc1.getWords().size(), 
+				sentence2.getWords().size()));
+	return sentences;
     }
 
 }
