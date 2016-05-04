@@ -13,4 +13,9 @@ public interface SentencePart {
      */
     void setPart(String part);
     
+    /**
+     * return type of sentence part.
+     * @return type
+     */
+    int typeOfPart();
 }
