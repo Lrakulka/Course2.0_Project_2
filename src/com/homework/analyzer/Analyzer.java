@@ -1,12 +1,14 @@
 package com.homework.analyzer;
 
 import java.util.List;
+
 import com.homework.parts.*;
+import com.homework.parts.Number;
 
 public interface Analyzer {
     String REAPLECE_SYMBOLS = "(\\s{2,})|(\t)";
     String CHANGE_TO_CHARACTER = " ";
-    String PARAGRAPH = ".+\u2029$";
+    String PARAGRAPH = ".+\u2029$|\\z";
     String SENTENCE = ".+(.+)|(!+)|?|;|$";
     String WORD = "(\\w*[a-zA-Z]+\\w*)|([a-zA-Z_]+\\w*)";
     String NUMBER = "([-]?[0-9]+(.[0-9]+)?)|";
@@ -33,32 +35,25 @@ public interface Analyzer {
     List<Sentence> getSentences(String text);
     
     /**
-     * Return parts of text - numbers, words, sings.
-     * @param text
-     * @return paragraphs
-     */
-    List<SentencePart> getTextParts(String text);
-    
-    /**
      * Return list of words in text.
      * @param text
      * @return list of words
      */
-    List<String> getTextWords(String text);
+    List<Word> getTextWords(StringBuilder text);
     
     /**
      * Return list of numbers from input text.
      * @param text
      * @return list of numbers
      */
-    List<String> getTextNumbers(String text);
+    List<Number> getTextNumbers(StringBuilder text);
     
     /**
      * Return list of input text signs - [.,',,,! and so on..
      * @param text
      * @return list of signs
      */
-    List<SentencePartImp> getTextSigns(String text);
+    List<Sign> getTextSigns(StringBuilder text);
     
     /**
      * Return list of sentences which contains the most common words.

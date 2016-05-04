@@ -4,11 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import com.homework.parts.Paragraph;
-import com.homework.parts.Sentence;
-import com.homework.parts.SentencePart;
-import com.homework.parts.SentencePartImp;
-import com.homework.parts.Text;
+import com.homework.parts.*;
+import com.homework.parts.Number;
 
 public class AnalyzerImp implements Analyzer {
     private Pattern paragrapPattern;
@@ -34,38 +31,41 @@ public class AnalyzerImp implements Analyzer {
     public List<Paragraph> getParagraphs(String text) {
 	Matcher matcher = paragrapPattern.matcher(text);
 	List<Paragraph> paragraphs = new ArrayList<>();
+	String paragraphString;
 	while (matcher.find()) {
-	   matcher.group();
+	    paragraphString = matcher.group();
+	    paragraphs.add(new Paragraph(getSentences(paragraphString)));
 	}
 	return paragraphs;
     }
 
     @Override
     public List<Sentence> getSentences(String text) {
+	Matcher matcher = sentencePattern.matcher(text);
+	List<Sentence> sentences = new ArrayList<>();
+	StringBuilder sentencesString;
+	while (matcher.find()) {
+	    sentencesString = new StringBuilder(matcher.group());
+	    sentences.add(new Sentence(getTextWords(sentencesString), 
+		    getTextNumbers(sentencesString), getTextSigns(sentencesString)));
+	}
+	return sentences;
+    }
+
+    @Override
+    public List<Word> getTextWords(StringBuilder text) {
 	// TODO Auto-generated method stub
 	return null;
     }
 
     @Override
-    public List<SentencePart> getTextParts(String text) {
+    public List<Number> getTextNumbers(StringBuilder text) {
 	// TODO Auto-generated method stub
 	return null;
     }
 
     @Override
-    public List<String> getTextWords(String text) {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    @Override
-    public List<String> getTextNumbers(String text) {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    @Override
-    public List<SentencePartImp> getTextSigns(String text) {
+    public List<Sign> getTextSigns(StringBuilder text) {
 	// TODO Auto-generated method stub
 	return null;
     }

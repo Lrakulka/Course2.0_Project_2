@@ -1,36 +1,32 @@
 package com.homework.parts;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Sentence {
-    private String unknownElements;
-    private List<SentencePart> parts;
-    private String endSymbol;
-    
+    private List<Word> words;
+    private List<Number> numbers;
+    private List<Sign> signs;
     /**
      * Constructor of Sentence.
      * @param unknownElements
      * @param parts
      * @param endSymbol
      */
-    public Sentence(String unknownElements, List<SentencePart> parts, 
-	    String endSymbol) {
-	this.endSymbol = endSymbol;
-	this.unknownElements = unknownElements;
-	this.parts = new ArrayList<>(parts);
+    public Sentence(List<Word> words, List<Number> numbers, List<Sign> signs) {
+	this.words = words;
+	this.numbers = numbers;
+	this.signs = signs;
     }
     
-    public String getUnknownElements() {
-        return unknownElements;
+    public List<Word> getWords() {
+	return words;
     }
     
-    public List<SentencePart> getParts() {
-        return parts;
+    public List<Sign> getSigns() {
+	return signs;
     }
     
-    public String getEndSymbol() {
-	return endSymbol;
+    public List<Number> getNumbers() {
+	return numbers;
     }
-    
 }

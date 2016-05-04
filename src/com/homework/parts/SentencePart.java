@@ -1,16 +1,15 @@
 package com.homework.parts;
 
-public interface SentencePart {
+public interface SentencePart<T> {
     /**
      * Return part of text.
      * @return part of text
      */
-    String getPart();
+    T getPart();
     
     /**
-     * return type of sentence part. 
-     * 0 - word 1 - number 3 - sign -1 - unknown
-     * @return type
+     * Return position of element in text
+     * @return position
      */
-    byte typeOfPart();
+    int getPartPosition();
 }
