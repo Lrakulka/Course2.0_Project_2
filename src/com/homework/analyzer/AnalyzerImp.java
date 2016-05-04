@@ -1,5 +1,6 @@
 package com.homework.analyzer;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -31,8 +32,12 @@ public class AnalyzerImp implements Analyzer {
 
     @Override
     public List<Paragraph> getParagraphs(String text) {
-	// TODO Auto-generated method stub
-	return null;
+	Matcher matcher = paragrapPattern.matcher(text);
+	List<Paragraph> paragraphs = new ArrayList<>();
+	while (matcher.find()) {
+	   matcher.group();
+	}
+	return paragraphs;
     }
 
     @Override
@@ -65,8 +70,11 @@ public class AnalyzerImp implements Analyzer {
 	return null;
     }
 
+    /* (non-Javadoc)
+     * @see com.homework.analyzer.Analyzer#sortSentencesByWordsCount(com.homework.parts.Text)
+     */
     @Override
-    public List<Sentence> findSentencesWithMostSameWords(Text text) {
+    public List<Sentence> sortSentencesByWordsCount(Text text) {
 	// TODO Auto-generated method stub
 	return null;
     }

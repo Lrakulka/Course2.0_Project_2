@@ -66,5 +66,5 @@ public interface Analyzer {
      * @return list of sentence or 
      * empty list if sentences with same words didn't found
      */
-    List<Sentence> findSentencesWithMostSameWords(Text text);
+    List<Sentence> sortSentencesByWordsCount(Text text);
 }
