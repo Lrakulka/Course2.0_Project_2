@@ -2,7 +2,6 @@ package com.homework.analyzer;
 
 import java.util.List;
 import com.homework.parts.*;
-import com.homework.parts.Number;
 
 public interface Analyzer {
     String REAPLECE_SYMBOLS = "(\\s{2,})|(\t)";
@@ -45,21 +44,21 @@ public interface Analyzer {
      * @param text
      * @return list of words
      */
-    List<Word> getTextWords(String text);
+    List<String> getTextWords(String text);
     
     /**
      * Return list of numbers from input text.
      * @param text
      * @return list of numbers
      */
-    List<Number> getTextNumbers(String text);
+    List<String> getTextNumbers(String text);
     
     /**
      * Return list of input text signs - [.,',,,! and so on..
      * @param text
      * @return list of signs
      */
-    List<Sign> getTextSigns(String text);
+    List<SentencePartImp> getTextSigns(String text);
     
     /**
      * Return list of sentences which contains the most common words.
