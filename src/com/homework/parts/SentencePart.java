@@ -8,14 +8,9 @@ public interface SentencePart {
     String getPart();
     
     /**
-     * Set part of text.
-     * @param part
-     */
-    void setPart(String part);
-    
-    /**
-     * return type of sentence part.
+     * return type of sentence part. 
+     * 0 - word 1 - number 3 - sign -1 - unknown
      * @return type
      */
-    int typeOfPart();
+    byte typeOfPart();
 }
