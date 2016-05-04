@@ -32,4 +32,11 @@ public class Word implements SentencePart<String> {
 	return position;
     }
 
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        return word;
+    }
 }

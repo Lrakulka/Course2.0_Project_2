@@ -1,6 +1,8 @@
 package com.homework.parts;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 
 public class Sentence {
@@ -29,5 +31,27 @@ public class Sentence {
     
     public List<Number> getNumbers() {
 	return new ArrayList<>(numbers);
+    }
+    
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @SuppressWarnings("unchecked")
+    @Override
+    public String toString() {
+        StringBuilder sentence = new StringBuilder();
+        ArrayList<SentencePart<Object>> parts = new ArrayList<>();
+        parts.addAll((Collection<? extends SentencePart<Object>>) words);
+        parts.addAll((Collection<? extends SentencePart<Object>>) numbers);
+        parts.addAll((Collection<? extends SentencePart<Object>>) signs);
+        parts.sort(new Comparator<SentencePart<Object>>() {
+
+	    @Override
+	    public int compare(SentencePart<Object> o1, SentencePart<Object> o2) {
+		return Integer.compare(o1.getPartPosition(), o2.getPartPosition());
+	    }
+	});
+        parts.stream().forEach((part) -> sentence.append(part.toString()));
+        return sentence.toString();
     }
 }

@@ -63,7 +63,7 @@ public class AnalyzerImp implements Analyzer {
 	String word;
 	while (matcher.find()) {
 	    word = matcher.group();
-	    if (word.isEmpty()) {
+	    if (!word.isEmpty()) {
 		words.add(new Word(word, matcher.start()));
 	    }
 	}
@@ -105,7 +105,7 @@ public class AnalyzerImp implements Analyzer {
     public List<Sentence> sortSentencesByWordsCount(Text text) {
 	List<Sentence> sentences = new ArrayList<>();
 	text.getParagraphs().stream().forEach((p) -> sentences.addAll(p.getSentences()));
-	sentences.stream().sorted((sentenc1, sentence2) -> 
+	sentences.sort((sentenc1, sentence2) -> 
 			Integer.compare(sentenc1.getWords().size(), 
 				sentence2.getWords().size()));
 	return sentences;

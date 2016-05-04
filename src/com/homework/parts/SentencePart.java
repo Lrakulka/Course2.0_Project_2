@@ -12,4 +12,6 @@ public interface SentencePart<T> {
      * @return position
      */
     int getPartPosition();
+    
+    String toString();
 }

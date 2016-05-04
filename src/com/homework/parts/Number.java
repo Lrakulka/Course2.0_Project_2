@@ -32,4 +32,11 @@ public class Number implements SentencePart<Integer> {
 	return position;
     }
 
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        return String.valueOf(number);
+    }
 }

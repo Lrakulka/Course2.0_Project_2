@@ -8,10 +8,10 @@ import com.homework.parts.Number;
 public interface Analyzer {
     String REAPLECE_SYMBOLS = "(\\s{2,})|(\t)";
     String CHANGE_TO_CHARACTER = " ";
-    String PARAGRAPH = ".+\u2029$|\\z";
-    String SENTENCE = ".+(.+)|(!+)|\\?|;|$";
+    String PARAGRAPH = ".+((\u2029$)|(\\z))";
+    String SENTENCE = "[^.!?\\s][^.!?]*(?:[.!?](?!['\"]?\\s|$)[^.!?]*)*[.!?]?['\"]?(?=\\s|$)";
     String WORD = "(\\w*[a-zA-Z]+\\w*)|([a-zA-Z_]+\\w*)";
-    String NUMBER = "([-]?[0-9]+(.[0-9]+)?)|";
+    String NUMBER = "[-]?[0-9]+(.([0-9]+))?";
     String SIGN = "(\\p{Punct}+)|(\\p{Blank}+)";
     /**
      * Filter text. Change all tabs and repeated spaces to space.

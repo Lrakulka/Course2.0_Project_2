@@ -32,4 +32,11 @@ public class Sign implements SentencePart<Character> {
 	return position;
     }
 
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        return String.valueOf(sign);
+    }
 }
