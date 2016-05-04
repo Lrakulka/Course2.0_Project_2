@@ -10,6 +10,12 @@ package com.homework.parts;
 public class Sign implements SentencePart<Character> {
     private char sign;
     private int position;
+    
+    public Sign(char sign, int position) {
+	this.position = position;
+	this.sign = sign;
+    }
+    
     /* (non-Javadoc)
      * @see com.homework.parts.SentencePart#getPart()
      */

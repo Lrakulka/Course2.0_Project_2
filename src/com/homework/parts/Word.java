@@ -10,6 +10,12 @@ package com.homework.parts;
 public class Word implements SentencePart<String> {
     private String word;
     private int position;
+    
+    public Word(String word, int position) {
+	this.position = position;
+	this.word = word;
+    }
+    
     /* (non-Javadoc)
      * @see com.homework.parts.SentencePart#getPart()
      */

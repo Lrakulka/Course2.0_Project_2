@@ -1,5 +1,6 @@
 package com.homework.parts;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Sentence {
@@ -18,15 +19,15 @@ public class Sentence {
 	this.signs = signs;
     }
     
-    public List<Word> getWords() {
-	return words;
+    public final List<Word> getWords() {
+	return new ArrayList<>(words);
     }
     
     public List<Sign> getSigns() {
-	return signs;
+	return new ArrayList<>(signs);
     }
     
     public List<Number> getNumbers() {
-	return numbers;
+	return new ArrayList<>(numbers);
     }
 }

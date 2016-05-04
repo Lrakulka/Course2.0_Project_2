@@ -7,11 +7,11 @@ public class Paragraph {
     private List<Sentence> sentences;
 
     public Paragraph(List<Sentence> sentences) {
-	this.sentences = new ArrayList<>(sentences);
+	this.sentences = sentences;
     }
     
     public List<Sentence> getSentences() {
-        return sentences;
+        return new ArrayList<>(sentences);
     }
     
 }
