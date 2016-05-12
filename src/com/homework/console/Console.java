@@ -18,12 +18,14 @@ public class Console {
              + " time.  The <tt>add</tt> operation runs in <i>amortized constant time</i>,"
              + " that is, adding n elements requires O(n) time.  All of the other operations"
              + " run in linear time (roughly speaking).  The constant factor is low compared"
-             + " to that for the <tt>LinkedList</tt> implementation.";
-	Analyzer analyzer = new AnalyzerImp();
-	t = analyzer.filterText(t);
-	Text text = new Text(analyzer.getParagraphs(t));
-	System.out.println(t);
+             + " to that for the <tt>LinkedList</tt> implementation." 
+             + "Sasha 23 pil vodu sivodna. Kapusta krolike."
+             + "Palka palka kartka 34 kapusta.";
+	Text text = new Text(t);
+	text.getTextClassTree();
+	System.out.println(text.getFiltrText());
 	System.out.println();
+	Analyzer analyzer = new AnalyzerImp();
 	analyzer.sortSentencesByWordsCount(text).stream().
 		forEach((s) -> System.out.println(s.toString()));
     }

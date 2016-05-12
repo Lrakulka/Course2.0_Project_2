@@ -25,7 +25,7 @@ public interface Analyzer {
      * @param text which need to split by paragraphs
      * @return list of paragraphs
      */
-    List<Paragraph> getParagraphs(String text);
+    List<Paragraph> getParagraphs(Text text);
     
     /**
      * Return list of sentences from text.

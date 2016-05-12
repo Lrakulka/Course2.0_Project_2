@@ -28,8 +28,8 @@ public class AnalyzerImp implements Analyzer {
     }
 
     @Override
-    public List<Paragraph> getParagraphs(String text) {
-	Matcher matcher = paragrapPattern.matcher(text);
+    public List<Paragraph> getParagraphs(Text text) {
+	Matcher matcher = paragrapPattern.matcher(text.getFiltrText());
 	List<Paragraph> paragraphs = new ArrayList<>();
 	String paragraphString;
 	while (matcher.find()) {
